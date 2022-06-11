@@ -54,8 +54,8 @@
 	```
 	FB    git@github.com:FourthBrain/MLE-7.git (fetch)
 	FB    git@github.com:FourthBrain/MLE-7.git (push)
-	origin git@github.com:rafatisina/TestRepo.git (fetch)
-	origin git@github.com:rafatisina/TestRepo.git (push)
+	origin	git@github.com:AsiehH/MLE-7.git (fetch)
+	origin	git@github.com:AsiehH/MLE-7.git (push)
 	```
 	
 9. `git fetch --all`
@@ -91,6 +91,11 @@
 Git fetch --all
 Git checkout FBranch
 git merge --ff-only @{u}
+
+git pull --rebase
+git checkout main
+git merge FBranch
+
 git add .
 git commit -m "branch is updated"
 git checkout main
