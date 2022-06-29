@@ -86,15 +86,13 @@
 	
 	
 ## From now on fter each release
+- if you haven't changed anything on LocalDev since the last release:
 
 ```
-Git fetch --all
-Git checkout FBranch
+git fetch --all
+git checkout FBranch
 git merge --ff-only @{u}
 
-git pull --rebase
-git checkout main
-git merge FBranch
 
 git add .
 git commit -m "branch is updated"
@@ -103,3 +101,14 @@ git merge FBranch --allow-unrelated-histories
 you will be asked to add a comment about why this change is necessary --> put a message
 git push origin main
 ```	
+- otherwise:
+
+```
+git fetch --all
+git checkout FBranch
+
+git pull --rebase
+git checkout main
+git merge FBranch
+git push origin main
+```
