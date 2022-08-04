@@ -30,12 +30,15 @@ By the end of this lesson, you will be able to:
 1. Create a new virtual environment for this project:
     
     `conda create -n stock-predictor python=3.8`
+    
+1. Activate the virtual environment to start the development process
+    
 1. Install the following dependencies:
 
     `pip install -U -q fastapi uvicorn` 
 
 1. Clone the repo to your local machine 
-1. Activate the virtual environment to start the development process
+
     
     `conda activate stock-predictor`
 4. Create a file `main.py` for our app. Inside the file, create a new instance of `FastAPI` and set up a quick test route
@@ -202,6 +205,7 @@ We will use [Prophet](https://facebook.github.io/prophet/) to predict stock mark
 In this task, we will wire up our API. 
 
 1. Add a `/predict` endpoint by updating `main.py`:
+    
     ```python
     from fastapi import FastAPI, Query, HTTPException
     from pydantic import BaseModel
@@ -238,6 +242,7 @@ In this task, we will wire up our API.
 
 1. Disable plotting for the web app.
 Let's just output the forecast in JSON. Comment out the following lines in `predict` in `model.py`:
+
     ```python
     # model.plot(forecast).savefig(f"{ticker}_plot.png")
     # model.plot_components(forecast).savefig(f"{ticker}_plot_components.png")
@@ -281,9 +286,10 @@ Let's just output the forecast in JSON. Comment out the following lines in `pred
 
 1. Generate requirements file for your working app in a shell:
     ```
-    pip freeze > requirements.txt
+    pip list --format=freeze > requirements.txt
     ```
 1. If you have not been "ABC: always be committing", make sure that all components are working with no errors, then push your changes. 
+
     ```
     git add .
     git commit -m "create a model and its endpoint"
@@ -329,7 +335,7 @@ Let's just output the forecast in JSON. Comment out the following lines in `pred
 
     - Use `stock-predictor-fastapi` for the **Key pair name** when generating the `pem` file.
 
-    - In Step 1-7 **Network Setting**: click `Edit` and make sure you have two (or three) security group rules. One has the type SSH with port 22, and another TCP port for the API, e.g., `8000`, edit the source. See the bottom of the screenshot below for reference. 
+    - In Step 1-7 **Network Setting**: click `Edit` and make sure you have two (or three) security group rules. One has the type SSH with port 22, and another TCP port for the API, e.g., `8000`, edit the source and also add port 5000 and 8000. See the bottom of the screenshot below for reference. 
         <p align="center">
         <img src="img/inbound-rules.png" alt="drawing" width="500"/>
         </p>
@@ -380,6 +386,7 @@ Let's just output the forecast in JSON. Comment out the following lines in `pred
     cd stock-predictor
     pip install -U pip
     pip install -r requirements.txt
+    
     ```
 1. Before launching the app, we can avoid ssh time out using `tmux` to create a new session. 
     ```
