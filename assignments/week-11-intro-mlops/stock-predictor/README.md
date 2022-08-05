@@ -303,7 +303,7 @@ Let's just output the forecast in JSON. Comment out the following lines in `pred
     <details> 
     <summary> Click here to see a sample structure of the repository </summary>
 
-    Don't worry if your scripts are not wrapped under `scr` folder.
+    Don't worry if your scripts are not wrapped under `scr` folder. But make sure that your `main.py`, `model.py` and your models (`.joblib` files) are on the same level, either in `src` or on the project root folder.
     ```
     .
     ├── LICENSE
