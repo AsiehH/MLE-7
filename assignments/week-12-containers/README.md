@@ -94,7 +94,7 @@ You can refer to [FastAPI in Containers - Docker](https://fastapi.tiangolo.com/d
 
     So, it's important to put this near the end of the Dockerfile, to optimize the container image build times. 
     
-    Make sure you have `main.py`, `model.py` and the model files `.joblib` into `src` folder. 
+    Make sure you have `main.py`, `model.py` and the model files `.joblib` in `src` folder. 
 
     Read [Docker Cache](https://fastapi.tiangolo.com/deployment/docker/#docker-cache) for more information.
     
