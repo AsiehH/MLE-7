@@ -76,12 +76,25 @@ You can refer to [FastAPI in Containers - Docker](https://fastapi.tiangolo.com/d
     COPY requirements.txt .
     RUN pip install --no-cache-dir -U -r  requirements.txt
     ```
-
+    * To avoid errors related to different OS environments during installation, you can edit the requirements file to the following:
+    ```
+    fastapi 
+	uvicorn
+	pandas
+	yfinance
+	prophet
+	joblib
+	argparse
+    ```
+	* If you commented out the code snippet that starts with `if __name__ == "__main__":` in your `main.py`, you might as well remove argparse from your requirements file. 
+	
 1. Copy everything under `src/` directory inside `.` directory.
 
     As this has all the code which is what changes most frequently the Docker cache won't be used for this or any following steps easily.
 
     So, it's important to put this near the end of the Dockerfile, to optimize the container image build times. 
+    
+    Make sure you have `main.py`, `model.py` and the model files `.joblib` into `src` folder. 
 
     Read [Docker Cache](https://fastapi.tiangolo.com/deployment/docker/#docker-cache) for more information.
     
