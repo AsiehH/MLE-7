@@ -32,6 +32,8 @@ By the end of this lesson, you will be able to:
     `conda create -n stock-predictor python=3.8`
     
 1. Activate the virtual environment to start the development process
+
+ `conda activate stock-predictor`
     
 1. Install the following dependencies:
 
@@ -40,7 +42,7 @@ By the end of this lesson, you will be able to:
 1. Clone the repo to your local machine 
 
     
-    `conda activate stock-predictor`
+   
 4. Create a file `main.py` for our app. Inside the file, create a new instance of `FastAPI` and set up a quick test route
 
     ```python
@@ -78,7 +80,7 @@ We will use [Prophet](https://facebook.github.io/prophet/) to predict stock mark
     - Basic data manipulation and plotting: `pandas matplotlib`
     - Data and modeling: `yfinance pystan prophet joblib`
 
-1. Create a new file `model.py` and add the following code to train the model and generate a prediction:
+2. Create a new file `model.py` and add the following code to train the model and generate a prediction:
 
     ```python
     import datetime
@@ -152,15 +154,15 @@ We will use [Prophet](https://facebook.github.io/prophet/) to predict stock mark
 
     Here we defined three functions (this model was developed by [Andrew Clark](https://twitter.com/aclarkdata1)):
 
-    1. `train` downloads historical stock data with [`yfinance`](https://github.com/ranaroussi/yfinance), creates a new Prophet model, fits the model to the stock data, and then serializes and saves the model as a [`Joblib file`](https://joblib.readthedocs.io/en/latest/generated/joblib.dump.html).
+    3. `train` downloads historical stock data with [`yfinance`](https://github.com/ranaroussi/yfinance), creates a new Prophet model, fits the model to the stock data, and then serializes and saves the model as a [`Joblib file`](https://joblib.readthedocs.io/en/latest/generated/joblib.dump.html).
 
-    1. `predict` loads and deserializes the saved model, generates a new forecast, creates images of the forecast plot and forecast components, and returns the days included in the forecast as a list of dicts.
+    4. `predict` loads and deserializes the saved model, generates a new forecast, creates images of the forecast plot and forecast components, and returns the days included in the forecast as a list of dicts.
 
-    1. `convert` takes the list of dicts from `predict` and outputs a dict of dates and forecasted values; e.g., `{"07/02/2020": 200}`).
+    5. `convert` takes the list of dicts from `predict` and outputs a dict of dates and forecasted values; e.g., `{"07/02/2020": 200}`).
 
-    1. The last block of code allows you to execute the model from the command line, with two arguments, a valid stock ticker and the number of days to predict. 
+    6. The last block of code allows you to execute the model from the command line, with two arguments, a valid stock ticker and the number of days to predict. 
 
-1. Let's run it and see the results. In a shell, run:
+3. Let's run it and see the results. In a shell, run:
     
     `python model.py`
 
@@ -194,14 +196,16 @@ We will use [Prophet](https://facebook.github.io/prophet/) to predict stock mark
     <img src="img/MSFT_plot_components.png" alt="drawing" width="240"/>
     </p>
 
-1. Feel free to make more models, e.g.,
+14. Feel free to make more models, e.g.,
     ```
     python model.py --ticker AAPL --days 7
     python model.py --ticker GOOG --days 7
     ```
 
-1. Push your changes as you go, as long as there are no errors.
+5. Push your changes as you go, as long as there are no errors.
+
 ## Task 3. Routes
+
 In this task, we will wire up our API. 
 
 1. Add a `/predict` endpoint by updating `main.py`:
@@ -426,7 +430,7 @@ Let's just output the forecast in JSON. Comment out the following lines in `pred
 
 1. Final step: detach `tmux` session so that it continues running in the background when you leave ssh shell. Press `Ctrl`+`b`, release, then press `d` (NOT `Ctrl`, `b`, and `d` together). Then you can leave the ssh shell and the app will continue running.
 
-    You can attach the session by running `tmux attach -t StockSession`.
+    You can attach the session by running `tmux attach -t stock_session`.
 
 1. You shall be able to access the API documentation and share it with others. Use the Public IP address for your EC2 instance, e.g., `http://35.90.247.255:8000/docs`. 
 
@@ -437,8 +441,8 @@ Let's just output the forecast in JSON. Comment out the following lines in `pred
     Click `Try it out` to make predictions interactively.
 
     <p align="center">
-    <img src="img/docs01.png" alt="drawing" width="400"/>
-    <img src="img/docs02.png" alt="drawing" width="400"/>
+    <img src="stock-predictor/img/docs01.png" alt="drawing" width="400"/>
+    <img src="stock-predictor/img/docs02.png" alt="drawing" width="400"/>
     </p>
     </details>
 
