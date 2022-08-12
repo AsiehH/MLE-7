@@ -393,6 +393,13 @@ At the end of this session, you will be able to:
       export AWS_SECRET_ACCESS_KEY=your_secret_access_key
    ```
    while replacing your_access_key_id and your_secret_access_key with the values you find in the csv file you downloaded earlier. If you're using our AWS resources, you will use the keys we provided you.
+   
+   **Note** You might get an error for credentials. Try
+   ```
+   brew install awscli
+   # set up the credentials
+   aws configure
+   ```
 
 1. Deployment using SAM CLI
 
@@ -479,6 +486,9 @@ At the end of this session, you will be able to:
    ```bash
    aws cloudformation delete-stack --stack-name <stack-name> --region us-east-1
    ```
+   or if it doesn't work:
+   
+   `sam delete --stack-name <stack-name> --region us-east-1`
 
    On <https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1>, you will notice that our stack doesn't exist anymore.
 
