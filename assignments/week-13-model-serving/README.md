@@ -11,7 +11,7 @@ This week, a colleague passed their Tesla sentiment analysis model to you and wo
 
 ## Deliverable
 
-- Link to the repo that hosts Tesla sentiment analysis model
+- Link to the repo that hosts Tesla sentiment analysis model. Click [here](https://github.com/AsiehH/teslabot). 
 
 ## ☑️ Objectives
 At the end of this session, you will be able to:
