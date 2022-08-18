@@ -39,6 +39,14 @@ This tutorial uses docker-compose locally to demonstrate training a model, recor
 Initialize a `python3` virtual environment and activate it. Then install the training dependencies.
 
 ```console
+git clone https://github.com/FourthBrain/ml-monitoring-grafana
+```
+
+```console
+cd ml-monitoring-grafana
+```
+
+```console
 pip install requests
 ```
 
@@ -77,26 +85,28 @@ curl localhost:5000 -H "Content-Type: application/json" \
 
 # PromQL Metrics
 
-Let's return to the original terminal. Start the monitoring stack locally using `docker-compose.yml`.
+Let's return to the original terminal. To stop the inference server, use <kbd>CTRL</kbd>+<kbd>Space</kbd> or <kbd>⌘</kbd>+<kbd>C</kbd>
+
+Start the monitoring stack locally using `docker-compose.yml`.
 
 ```console
 docker compose up
 ```
 
-We will now simulate a load on our server. Generate some load with `metrics/load.py`.
+Go back to the second terinal. We will now simulate a load on our server. Generate some load with `metrics/load.py`.
 
 ```console
 python metrics/load.py
 ```
 
-With our pre-configured setup, Prometheus is configured to automatically scrape the flask server every 15 seconds for feature distribution metrics. 
+You can swap back to the first terminal to the activity. With our pre-configured setup, Prometheus is configured to automatically scrape the flask server every 15 seconds for feature distribution metrics. 
 
 Navigate to [http://localhost:3000](http://localhost:3000) for the Grafana GUI. 
 Login with 
 - username: `admin`
 - password: `admin`
 
-Skip changing the admin password. Then navigate to `Dashboards` -> `Manage` -> `Model Metrics`:
+Skip changing the admin password. Then navigate to `Dashboards`(four little squares on the left) -> `Manage` -> `Model Metrics`:
 
 ![Grafana dashboard](assets/regression.png "Grafana Dashboard")
 
@@ -143,3 +153,5 @@ Please make sure to shut down your docker compose along with the inference serve
 docker-compose down
 ```
 
+# Resources
+[Evidently ML Example Notebooks](https://github.com/evidentlyai/evidently#card_index_dividers-examples)
