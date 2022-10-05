@@ -146,7 +146,7 @@ You can refer to [FastAPI in Containers - Docker](https://fastapi.tiangolo.com/d
 
 1. Verify that the image has been built.
 
-    ```docker image -ls # docker images```    
+    ```docker image ls # docker images```    
 
     You shall see something similar to this:
     
